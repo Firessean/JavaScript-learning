@@ -11,10 +11,10 @@ console.log(document.querySelector('.guess').value);
  */
 
 const randomNumber = function () {
-    return Math.trunc(Math.random() * 20) + 1;
+    return Math.trunc(Math.random() * 40) + 1;
 }
 let secretNumber = randomNumber();
-let score = 20;
+let score = 30;
 let highscore = 0;
 
 const displayMessage = function (message) {
@@ -32,9 +32,7 @@ const bodyBackgroundColor = function (color) {
 const displayScore = function (score) {
     document.querySelector('.score').textContent = score;
 };
-
-
-document.querySelector('.check').addEventListener('click', function () {
+const gameLogic = function () {
     const guess = Number(document.querySelector('.guess').value);
     console.log(guess, typeof guess);
 
@@ -98,10 +96,12 @@ document.querySelector('.check').addEventListener('click', function () {
     //         document.querySelector('.score').textContent = String('0');
     //     }
     // }
-});
+};
+
+document.querySelector('.check').addEventListener('click', gameLogic);
 
 document.querySelector('.again').addEventListener('click', function () {
-   score = 20;
+   score = 30;
    secretNumber = randomNumber();
 
    document.querySelector('.guess').value = '';
@@ -116,4 +116,8 @@ document.querySelector('.again').addEventListener('click', function () {
    bodyBackgroundColor('#222');
    // document.querySelector('.number').style.width = '15rem';
    widthOfNumber('15rem');
+});
+
+document.addEventListener('keydown', function (e) {
+   if (e.key === 'Enter')  gameLogic();
 });
