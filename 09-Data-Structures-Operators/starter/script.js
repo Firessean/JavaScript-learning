@@ -46,6 +46,17 @@ const restaurant = {
     },
 };
 
+// Looping Arrays_ The for-of Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const [item] of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+    console.log(`${i + 1}: ${el}`);
+}
+
+// console.log([...menu.entries()]);
+
 // Coding Challenge 1
 /*
     We're building a football betting app (soccer for my American friends)!
@@ -78,7 +89,7 @@ Then, call the function again with players from game.scored
 
 GOOD LUCK
  */
-
+/*
 // Game Data
 const game = {
     team1: 'Bayern Munich',
@@ -149,6 +160,7 @@ printGoals(...game.scored);
 
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
+*/
 
 /*
 // The Nullish Coalescing Operator (__)
