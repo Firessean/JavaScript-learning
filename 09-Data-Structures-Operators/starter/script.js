@@ -53,6 +53,50 @@ const restaurant = {
   },
 };
 
+// Coding Challenge 4
+/*
+  Write a program that receives a list of variable names written in underscore_case
+and convert them to camelCase.
+  The input will come from a textarea inserted into the DOM (see code below to
+insert the elements), and conversion will happen when the button is pressed.
+  Test data (pasted to textarea, including spaces):
+underscore_case
+ first_name
+Some_Variable
+  calculate_AGE
+delayed_departure
+
+  Should produce this output (5 separate console.log outputs):
+underscoreCase   ✅
+firstName        ✅✅
+someVariable     ✅✅✅
+calculateAge     ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+
+  Afterwards, test with your own test data!
+
+    GOOD LUCK
+ */
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+// My solution
+const button = document.querySelector('button');
+button.addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const textSplit = text.split('\n');
+
+  for (const [i, t] of textSplit.entries()) {
+    const [first, second] = t.toLowerCase().trim().split('_');
+
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});
+
+/*
 // Working With Strings - Part 3
 // Split and Join
 console.log('a+very+nice+string'.split('+'));
@@ -103,6 +147,7 @@ const planeInLine = function (n) {
 planeInLine(5);
 planeInLine(3);
 planeInLine(12);
+ */
 
 /*
 // Working With Strings - Part 2
