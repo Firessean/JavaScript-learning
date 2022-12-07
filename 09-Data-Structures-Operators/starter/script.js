@@ -53,6 +53,50 @@ const restaurant = {
   },
 };
 
+// Working With Strings - Part 1
+const airline = 'TAP Air Ukraine';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('Ukraine'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') {
+    console.log('You got the middle seat 😬');
+  } else {
+    console.log('You got lucky 😎');
+  }
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('Jonas'));
+console.log(typeof new String('Jonas'));
+
+console.log(typeof new String('Jonas').slice(1));
+
 // Coding Challenge 3
 /*
 Let's continue with our football betting app!
@@ -73,7 +117,7 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 
 GOOD LUCK
  */
-
+/*
 const gameEvents = new Map([
   [17, '⚽ GOAL'],
   [36, '🔁 Substitution'],
@@ -110,7 +154,7 @@ for (const [key, value] of gameEvents) {
   // const half = key <= 45 ? 'FIRST' : 'SECOND';
   // console.log(`[${half} HALF] ${key}: ${value}`);
 }
-
+\*
 /*
 // Maps Iteration
 const question = new Map([
