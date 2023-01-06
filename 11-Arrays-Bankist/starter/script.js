@@ -73,7 +73,7 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
     </div>
 `;
 
@@ -84,9 +84,29 @@ displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -332,7 +352,7 @@ Data 2: [16, 6, 10, 5, 6, 1, 4]
 
     GOOD LUCK
  */
-
+/*
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(dogsAge =>
     dogsAge <= 2 ? 2 * dogsAge : 16 + dogsAge * 4
@@ -351,3 +371,19 @@ console.log(avg1);
 console.log('---- Data 2 ----');
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg2);
+ */
+
+// The Magic of Chaining Methods
+// PIPELINE
+const euroToUSD = 1.1;
+console.log(movements);
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  // .filter(mov => mov < 0)
+  // .map(mov => mov * euroToUSD)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * euroToUSD;
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
