@@ -372,7 +372,7 @@ console.log('---- Data 2 ----');
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg2);
  */
-
+/*
 // The Magic of Chaining Methods
 // PIPELINE
 const euroToUSD = 1.1;
@@ -387,3 +387,26 @@ const totalDepositsUSD = movements
   })
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
+ */
+
+// Coding Challenge 3
+/*
+Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
+as an arrow function, and using chaining!
+
+    Test data:
+
+Data 1: [5, 2, 4, 1, 15, 8, 3]
+Data 2: [16, 6, 10, 5, 6, 1, 4]
+
+    GOOD LUCK
+ */
+
+const calcAverageHumanAge = ages =>
+  ages
+    .map(dogsAge => (dogsAge <= 2 ? 2 * dogsAge : 16 + dogsAge * 4))
+    .filter(humanAges => humanAges >= 18)
+    .reduce((acc, adult, i, arr) => acc + adult / arr.length, 0);
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
